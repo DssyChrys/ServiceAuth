@@ -1,0 +1,33 @@
+import axios from 'axios';
+
+const getNewAccessToken = async (refreshToken) => {
+    try {
+        const response = await axios.post('/api/refresh-token', { refreshToken });
+        return response.data.token;
+    } catch (error) {
+        console.error('Erreur lors du rafraîchissement du token', error);
+        // Gérer l'erreur, par exemple rediriger vers la page de connexion
+    }
+};
+
+// Exemple d'appel API avec un access token
+const makeApiRequest = async () => {
+    try {
+        const response = await axios.get('/api/protected-route', {
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        });
+        console.log(response.data);
+    } catch (error) {
+        if (error.response.status === 401) {
+            const refreshToken = localStorage.getItem('refreshToken');
+            const newAccessToken = await getNewAccessToken(refreshToken);
+            localStorage.setItem('token', newAccessToken); // Stocker le nouveau token
+
+            // Refaire la requête avec le nouveau token
+            const retryResponse = await axios.get('/api/protected-route', {
+                headers: { Authorization: `Bearer ${newAccessToken}` }
+            });
+            console.log(retryResponse.data);
+        }
+    }
+};

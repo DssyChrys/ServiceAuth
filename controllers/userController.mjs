@@ -1,11 +1,11 @@
-import UserModel from '../Model/userModel.mjs';
-import PersonalModel from '../Model/personalaccestokenModel.mjs'
+import UserModel from '../models/userModel.mjs';
+import PersonalModel from '../models/personalaccestokenModel.mjs'
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import SibApiV3Sdk from 'sib-api-v3-sdk';
 import dotenv from 'dotenv';
-import Personal from '../Model/personalaccestokenModel.mjs';
+import Personal from '../models/personalaccestokenModel.mjs';
 
 dotenv.config(); 
 

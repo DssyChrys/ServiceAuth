@@ -1,5 +1,5 @@
 import { Sequelize, DataTypes } from 'sequelize';
-import sequelize from '../Config/config.mjs';
+import sequelize from '../config/config.mjs';
 
 const Personal = sequelize.define('personal_access_token', {
     id: {

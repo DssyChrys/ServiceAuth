@@ -3,10 +3,10 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import session from 'express-session';
 import passport from 'passport';
-import apiRoutes from './Route/apiRoutes.mjs';
-import authRoutes from './Route/authRoutes.mjs';
+import apiRoutes from './routes/apiRoutes.mjs';
+import authRoutes from './routes/authRoutes.mjs';
 
-import './Config/passport-config.mjs';
+import './config/passport-config.mjs';
 
 const app = express();
 

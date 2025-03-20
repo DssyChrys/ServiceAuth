@@ -26,11 +26,7 @@ const User = sequelize.define('user', {
     password: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-    accessToken: {
-        type: DataTypes.TEXT,
-        allowNull: true
-    },
+    }
 }, {
     timestamps: true,
 });
